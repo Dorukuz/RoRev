@@ -1,10 +1,12 @@
 # RoRev
 
+<p align="center">
+  <img src="store/logo-readme.png" alt="RoRev logo" width="160" height="160" />
+</p>
+
 Free open-source Chrome / Opera extension that shows **estimated** Roblox experience earnings and public stats on game pages.
 
 > Heuristic estimates only — not official Roblox analytics. Not affiliated with Roblox Corporation or RoMonitor Stats.
-
-![RoRev logo](store/logo-master.png)
 
 ## Install (unpacked)
 
