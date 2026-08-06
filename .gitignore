@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+*.crx
+*.pem
+node_modules/
+.store-upload/
+*.zip
+store/RoRev-*.zip
+.env
+.cursor/

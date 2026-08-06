@@ -1,0 +1,345 @@
+/* Far-right overlay — zero impact on Roblox game layout */
+
+#rorev-root,
+#rorev-root.rorev-sidebar {
+  position: fixed !important;
+  top: 88px;
+  right: 16px;
+  left: auto;
+  bottom: auto;
+  z-index: 2147483000;
+  display: block;
+  width: 300px;
+  max-width: min(300px, calc(100vw - 24px));
+  max-height: calc(100vh - 104px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+@media (max-width: 720px) {
+  #rorev-root,
+  #rorev-root.rorev-sidebar {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+    width: min(300px, calc(100vw - 24px));
+    max-height: 45vh;
+  }
+}
+
+#rorev-root {
+  font-family: "Builder Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--rorev-text, #393b3d);
+  box-sizing: border-box;
+  --rorev-text: #393b3d;
+  --rorev-muted: #6a6e73;
+  --rorev-bg: #f7f7f8;
+  --rorev-surface: #ffffff;
+  --rorev-border: #e3e3e3;
+  --rorev-accent: #00a2ff;
+  --rorev-earn: #02b757;
+  --rorev-warn: #d9822b;
+}
+
+body.dark-theme #rorev-root,
+html.dark-theme #rorev-root,
+body[data-theme="dark"] #rorev-root,
+.dark-theme #rorev-root {
+  --rorev-text: #ffffff;
+  --rorev-muted: #bdbebe;
+  --rorev-bg: #1b1d1f;
+  --rorev-surface: #232527;
+  --rorev-border: #3c4043;
+  --rorev-earn: #3dd68c;
+  --rorev-warn: #f5a623;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.light-theme) #rorev-root {
+    --rorev-text: #ffffff;
+    --rorev-muted: #bdbebe;
+    --rorev-bg: #1b1d1f;
+    --rorev-surface: #232527;
+    --rorev-border: #3c4043;
+  }
+}
+
+#rorev-root *,
+#rorev-root *::before,
+#rorev-root *::after {
+  box-sizing: border-box;
+}
+
+#rorev-root .rorev-section {
+  background: var(--rorev-surface);
+  border: 1px solid var(--rorev-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+#rorev-root .rorev-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rorev-border);
+  background: var(--rorev-bg);
+}
+
+#rorev-root.rorev-collapsed .rorev-header {
+  border-bottom: none;
+  padding-bottom: 8px;
+}
+
+#rorev-root .rorev-brand {
+  flex: 1;
+  min-width: 0;
+}
+
+#rorev-root .rorev-eyebrow {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--rorev-muted);
+  line-height: 1.2;
+}
+
+#rorev-root .rorev-title {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rorev-text);
+  line-height: 1.2;
+}
+
+#rorev-root .rorev-header-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+#rorev-root .rorev-text-btn {
+  appearance: none;
+  border: 1px solid var(--rorev-border);
+  background: var(--rorev-surface);
+  color: var(--rorev-text);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#rorev-root .rorev-text-btn:hover {
+  border-color: var(--rorev-accent);
+  color: var(--rorev-accent);
+}
+
+#rorev-root .rorev-body {
+  padding: 10px 12px 12px;
+}
+
+/* Compact earnings — always visible */
+#rorev-root .rorev-earnings {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+#rorev-root .rorev-earn-card {
+  background: var(--rorev-bg);
+  border: 1px solid var(--rorev-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#rorev-root .rorev-earn-card.primary {
+  border-color: color-mix(in srgb, var(--rorev-earn) 40%, var(--rorev-border));
+}
+
+#rorev-root .rorev-earn-label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--rorev-muted);
+  flex-shrink: 0;
+}
+
+#rorev-root .rorev-earn-main {
+  text-align: right;
+  min-width: 0;
+}
+
+#rorev-root .rorev-earn-value {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--rorev-earn);
+  line-height: 1.15;
+}
+
+#rorev-root .rorev-earn-sub {
+  margin: 1px 0 0;
+  font-size: 11px;
+  color: var(--rorev-muted);
+  font-weight: 600;
+}
+
+/* Expanded-only blocks */
+#rorev-root.rorev-collapsed .rorev-details {
+  display: none;
+}
+
+#rorev-root .rorev-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rorev-border);
+}
+
+#rorev-root .rorev-section-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rorev-text);
+}
+
+#rorev-root .rorev-details .rorev-section-title + .rorev-section-title,
+#rorev-root .rorev-grid + .rorev-section-title {
+  margin-top: 12px;
+}
+
+#rorev-root .rorev-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+
+#rorev-root .rorev-stat {
+  background: var(--rorev-bg);
+  border: 1px solid var(--rorev-border);
+  border-radius: 6px;
+  padding: 7px 8px;
+}
+
+#rorev-root .rorev-stat-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--rorev-muted);
+  margin-bottom: 1px;
+}
+
+#rorev-root .rorev-stat-value {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rorev-text);
+  word-break: break-word;
+}
+
+#rorev-root .rorev-passes {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+#rorev-root .rorev-pass {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--rorev-border);
+  background: var(--rorev-bg);
+  font-size: 12px;
+}
+
+#rorev-root .rorev-pass-name {
+  color: var(--rorev-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+#rorev-root .rorev-pass-price {
+  color: var(--rorev-earn);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+#rorev-root .rorev-footer {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rorev-border);
+  font-size: 10px;
+  color: var(--rorev-muted);
+  line-height: 1.4;
+}
+
+#rorev-root .rorev-method {
+  color: var(--rorev-warn);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+#rorev-root .rorev-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+#rorev-root .rorev-status {
+  padding: 4px 0;
+  font-size: 12px;
+  color: var(--rorev-muted);
+}
+
+#rorev-root .rorev-status.error {
+  color: #e2231a;
+}
+
+#rorev-root .rorev-compact-note {
+  margin: 6px 0 0;
+  font-size: 10px;
+  color: var(--rorev-muted);
+}
+
+#rorev-root .rorev-show-link {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px dashed var(--rorev-border);
+  border-radius: 8px;
+  background: var(--rorev-bg);
+  color: var(--rorev-accent);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+}
+
+#rorev-root .rorev-show-link:hover {
+  border-style: solid;
+}
+
